@@ -1,0 +1,23 @@
+#Makefile que compila um programa colocando as funcoes sum.c e sub.c dentro da lib libtest.a
+
+LIB = libtest.a
+
+all:
+	@gcc -c sum.c sub.c
+	@ar rs $(LIB) sum.o sub.o
+	@rm -fR *.o
+	@gcc  -I . -c main.c
+	@gcc -o exec.x main.o -L . -ltest
+
+clean:
+	@rm -f *.o
+
+fclean:	clean
+	@rm -f $(LIB)
+	@rm -f *.x
+
+re: fclean all
+
+run:
+	@./exec.x
+

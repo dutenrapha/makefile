@@ -1,0 +1,12 @@
+#Makefile que compila um programa sem usar libs 
+
+all:
+	@gcc -c sum.c sub.c
+	@gcc  -I . -c main.c
+	@gcc -o exec.x main.o sub.o sum.o
+
+clean:
+	@rm -f *.o
+
+run:
+	@./exec.x

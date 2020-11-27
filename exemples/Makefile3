@@ -1,0 +1,18 @@
+
+LIB = libtest.so
+
+all:
+	@gcc -fPIC -c sum.c sub.c
+	@gcc -shared -o $(LIB) sum.o sub.o
+	@gcc  main.c -I . -o exec.x  -L . -ltest
+clean:
+	@rm -f *.o
+
+fclean:	clean
+	@rm -f $(LIB)
+	@rm -f *.x
+
+re: fclean all
+
+run:
+	@./exec.x
